@@ -57,15 +57,19 @@ def search_chatter(driver, settings):
     """
     Function that search the specified user and activates his chat
     """
-
+    print('While true...')
+    counter = 0
     while True:
-        for chatter in driver.find_elements_by_xpath("//div[@class='X7YrQ']"):
+        print(counter)
+        for chatter in driver.find_elements_by_xpath("//div[@class='_210SC']"): # span for a element that storage the name of the user
             chatter_name = chatter.find_element_by_xpath(
-                ".//span[contains(@class, '_19RFN')]").text
+                ".//span[contains(@class, '_3ko75')]").text   # span element that contains the name of the user 
+            print(chatter_name)
             if chatter_name == settings['name']:
                 chatter.find_element_by_xpath(
-                    ".//div[contains(@class,'_2UaNq')]").click()
+                    ".//div[contains(@class,'_210SC')]").click() # the chat...
                 return
+        counter = counter + 1
 
 
 def read_last_in_message(driver):
@@ -113,10 +117,14 @@ def main():
     (Browser profile where whatsapp web is already scanned)
     """
     settings = load_settings()
+    print('Settings loaded.')
     driver = load_driver(settings)
     driver.get(settings['page'])
+    print('WhatsappWeb Started.')
 
+    print('Searching chat.')
     search_chatter(driver, settings)
+    print('Founded chat.')
 
     previous_in_message = None
     while True:
