@@ -1,5 +1,5 @@
 [config]
 BROWSER = chrome
 BROWSER_PATH = C:\Users\pablo\AppData\Local\Google\Chrome\User Data\Default
-NAME = +55 79 9941-2407
+NAME = contact_name
 PAGE = https://web.whatsapp.com/
